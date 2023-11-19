@@ -4,39 +4,30 @@
              x:Class="MuseumFusion.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <StackLayout>
+            <Frame BackgroundColor="LightGray" Padding="10" Margin="10" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding MuseumBlockTappedCommand}"/>
+                </Frame.GestureRecognizers>
+                
+                <StackLayout Margin="10">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+                    <Image Source="museum1.jpg" Aspect="AspectFill" HeightRequest="200"/>
+                    <Label Text="{Binding MuseumName}" FontSize="20" FontAttributes="Bold"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding MuseumSubtitle}" FontSize="14" TextColor="Black"/>
+                        <Label Text="{Binding TodayDate}" FontSize="14" TextColor="Maroon" HorizontalOptions="End"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        
+        </StackLayout>
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
 
-        </VerticalStackLayout>
+
+        
     </ScrollView>
 
 </ContentPage>
-

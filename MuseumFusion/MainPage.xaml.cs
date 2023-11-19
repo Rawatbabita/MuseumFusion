@@ -1,25 +1,43 @@
-﻿namespace MuseumFusion;
+﻿using System;
+using System.Windows.Input;
+using Microsoft.Maui.Controls;
 
-public partial class MainPage : ContentPage
+namespace MuseumFusion
 {
-	int count = 0;
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+            BindingContext = new MainPageViewModel();
+        }
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+        public class MainPageViewModel : BindableObject
+        {
+            public string MuseumName { get; } = "Modern Art Expo";
+            public string MuseumSubtitle { get; } = "Gallery of Modern Art   ";
+            public string TodayDate { get; } = DateTime.Now.ToString("MMMM dd, yyyy");
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+            public ICommand MuseumBlockTappedCommand { get; }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+            public MainPageViewModel()
+            {
+                MuseumBlockTappedCommand = new Command(OnMuseumBlockTapped);
+            }
+
+            private void OnMuseumBlockTapped()
+            {
+                //var museumDetailsViewModel = new MuseumDetailsPageViewModel
+                //{
+                //    MuseumName = MuseumName,
+                //    MuseumSubtitle = MuseumSubtitle,
+                //    TodayDate = TodayDate
+                //};
+
+                //var museumDetailsPage = new MuseumDetailsPage { BindingContext = museumDetailsViewModel };
+                //Application.Current.MainPage.Navigation.PushAsync(museumDetailsPage);
+            }
+        }
+    }
 }
-
-
