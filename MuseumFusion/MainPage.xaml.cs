@@ -28,15 +28,15 @@ namespace MuseumFusion
 
             private void OnMuseumBlockTapped()
             {
-                //var museumDetailsViewModel = new MuseumDetailsPageViewModel
-                //{
-                //    MuseumName = MuseumName,
-                //    MuseumSubtitle = MuseumSubtitle,
-                //    TodayDate = TodayDate
-                //};
+                var museumDetailsViewModel = new MuseumDetailsPageViewModel
+                {
+                    MuseumName = MuseumName,
+                    MuseumSubtitle = MuseumSubtitle,
+                    TodayDate = TodayDate
+                };
 
-                //var museumDetailsPage = new MuseumDetailsPage { BindingContext = museumDetailsViewModel };
-                //Application.Current.MainPage.Navigation.PushAsync(museumDetailsPage);
+                var museumDetailsPage = new MuseumDetailsPage { BindingContext = museumDetailsViewModel };
+                Application.Current.MainPage.Navigation.PushAsync(museumDetailsPage);
             }
         }
     }

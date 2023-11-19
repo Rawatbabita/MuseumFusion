@@ -55,4 +55,12 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Images\museum1.jpg" />
+	  <None Remove="Resources\.DS_Store" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\museum1.jpg" />
+	  <BundleResource Include="Resources\.DS_Store" />
+	</ItemGroup>
 </Project>

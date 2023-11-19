@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MuseumFusion.MuseumDetailsPage"
+             Title="MuseumDetailsPage">
+    
+        <StackLayout>
+        <Image Source="museum1.jpg" Aspect="AspectFill" HeightRequest="200"/>
+            <StackLayout Margin="10">
+            <Label Text="{Binding MuseumName}" FontSize="20" FontAttributes="Bold"/>
+            <Label Text="{Binding TodayDate}" FontSize="14" TextColor="Maroon" HorizontalOptions="End"/>
+            <Label Text="{Binding MuseumSubtitle}" FontSize="14"/>
+                <Label Text="Ticket Price: $20" FontSize="16" TextColor="Green"/>
+                <Label Text="Details: Lorem ipsum dolor sit amet, consectetur adipiscing elit." FontSize="14"/>
+            </StackLayout>
+
+       <Button Text="Buy Tickets" Clicked="OnBuyTicketsClicked"/>
+        </StackLayout>
+  
+</ContentPage>
