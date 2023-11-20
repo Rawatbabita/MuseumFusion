@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MuseumFusion.PaymentPage"
+             Title="PaymentPage">
+    <StackLayout>
+        <Label Text="Price Details" FontSize="20" FontAttributes="Bold"/>
+        <Label Text="Ticket Price: $20" FontSize="16"/>
+        <Label Text="Tax: $5" FontSize="16"/>
+        <Label Text="Fees: $2" FontSize="16"/>
+        <Label Text="Total Amount: $27" FontSize="18" FontAttributes="Bold"/>
+
+
+        <Entry Placeholder="Card Holder Name" x:Name="CardHolderNameEntry"/>
+        <Entry Placeholder="Debit Card Number" x:Name="CardNumberEntry"/>
+        <Entry Placeholder="Expiration Date MM/YY" x:Name="ExpirationDateEntry"/>
+        <Entry Placeholder="Security Code" x:Name="SecurityCodeEntry"/>
+        <Entry Placeholder="Zip Code" x:Name="ZipCodeEntry"/>
+
+        <Button Text="Pay Now" Clicked="OnPayNowClicked" HorizontalOptions="CenterAndExpand" Margin="20"/>
+    </StackLayout>
+</ContentPage>
