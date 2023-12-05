@@ -1,68 +1,101 @@
-﻿namespace MuseumFusion
+﻿using MuseumFusion.Model;
+
+namespace MuseumFusion
 {
     public partial class MuseumDetailsPage : ContentPage
     {
-        public MuseumDetailsPage()
+        public Museum museum { get; set; }
+        public MuseumDetailsPage(Museum _museum)
         {
             InitializeComponent();
-
-            BindingContext = new MuseumDetailsPageViewModel();
+            museum = _museum;
+            BindingContext = museum;
         }
 
-        private void OnBuyTicketsClicked(object sender, EventArgs e)
+        private async void OnBuyTicketsClicked(object sender, EventArgs e)
         {
-            //  var ticketPrice = ((MuseumDetailsPageViewModel)BindingContext).TicketPrice;
+            bool isLoggedIn = CheckIfUserLoggedIn();
 
+            if (isLoggedIn)
+            {
+                await Navigation.PushAsync(new PaymentPage(museum));
+            }
+            else
+            {
+                await Navigation.PushAsync(new SignInPage());
+            }
+        }
 
-            //Navigation.PushAsync(new SignInPage());
+        private bool CheckIfUserLoggedIn()
+        {
+            return true; // Assume the user is logged in
         }
     }
 
-    public class MuseumDetailsPageViewModel : BindableObject
-    {
-        private string _museumName;
-        private string _museumSubtitle;
-        private string _todayDate;
-        private decimal _ticketPrice;
 
-        public string MuseumName
-        {
-            get => _museumName;
-            set
-            {
-                _museumName = value;
-                OnPropertyChanged(nameof(MuseumName));
-            }
-        }
+    //public partial class MuseumDetailsPage : ContentPage
+    //{
+    //    public MuseumDetailsPage()
+    //    {
+    //        InitializeComponent();
 
-        public string MuseumSubtitle
-        {
-            get => _museumSubtitle;
-            set
-            {
-                _museumSubtitle = value;
-                OnPropertyChanged(nameof(MuseumSubtitle));
-            }
-        }
+    //        BindingContext = new MuseumDetailsPageViewModel();
+    //    }
 
-        public string TodayDate
-        {
-            get => _todayDate;
-            set
-            {
-                _todayDate = value;
-                OnPropertyChanged(nameof(TodayDate));
-            }
-        }
+    //    private void OnBuyTicketsClicked(object sender, EventArgs e)
+    //    {
+    //      //  var ticketPrice = ((MuseumDetailsPageViewModel)BindingContext).TicketPrice;
+          
+            
+    //        Navigation.PushAsync(new SignInPage());
+    //    }
+    //}
 
-        public decimal TicketPrice
-        {
-            get => _ticketPrice;
-            set
-            {
-                _ticketPrice = value;
-                OnPropertyChanged(nameof(TicketPrice));
-            }
-        }
-    }
+    //public class MuseumDetailsPageViewModel : BindableObject
+    //{
+    //    private string _museumName;
+    //    private string _museumSubtitle;
+    //    private string _todayDate;
+    //    private decimal _ticketPrice; 
+
+    //    public string MuseumName
+    //    {
+    //        get => _museumName;
+    //        set
+    //        {
+    //            _museumName = value;
+    //            OnPropertyChanged(nameof(MuseumName));
+    //        }
+    //    }
+
+    //    public string MuseumSubtitle
+    //    {
+    //        get => _museumSubtitle;
+    //        set
+    //        {
+    //            _museumSubtitle = value;
+    //            OnPropertyChanged(nameof(MuseumSubtitle));
+    //        }
+    //    }
+
+    //    public string TodayDate
+    //    {
+    //        get => _todayDate;
+    //        set
+    //        {
+    //            _todayDate = value;
+    //            OnPropertyChanged(nameof(TodayDate));
+    //        }
+    //    }
+
+    //    public decimal TicketPrice
+    //    {
+    //        get => _ticketPrice;
+    //        set
+    //        {
+    //            _ticketPrice = value;
+    //            OnPropertyChanged(nameof(TicketPrice));
+    //        }
+    //    }
+    //}
 }
