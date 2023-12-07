@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MuseumFusion.AddMuseumPage"
+             Title="AddMuseumPage">
+
+    <StackLayout Margin="20" Spacing="15">
+        <Label Text="Museum Name" FontSize="18" />
+        <Entry x:Name="entryName" Placeholder="Enter museum name" FontSize="16" />
+
+        <Label Text="Place" FontSize="18" />
+        <Entry x:Name="entryPlace" Placeholder="Enter place" FontSize="16" />
+
+        <Label Text="Date" FontSize="18" />
+        <DatePicker x:Name="datePicker" FontSize="16" />
+
+        <Label Text="Image URL" FontSize="18" />
+        <Entry x:Name="entryImage" Placeholder="Enter image URL" FontSize="16" />
+
+        <Label Text="Price" FontSize="18" />
+        <Entry x:Name="entryPrice" Placeholder="Enter price" FontSize="16" />
+
+        <Label Text="Description" FontSize="18" />
+        <Entry x:Name="entryDescription" Placeholder="Enter description" FontSize="16" />
+
+        <Button Text="Save" Clicked="OnSaveClicked" BackgroundColor="#3498db" TextColor="White" FontSize="18" />
+    </StackLayout>
+
+</ContentPage>
