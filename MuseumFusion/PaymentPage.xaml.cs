@@ -1,4 +1,5 @@
 using MuseumFusion.Model;
+using System.Globalization;
 
 namespace MuseumFusion;
 
@@ -20,34 +21,63 @@ public partial class PaymentPage : ContentPage
         BindingContext = _paymentDetails;
     }
 
-    private void OnMakePaymentClicked(object sender, System.EventArgs e)
+    private async void OnMakePaymentClicked(object sender, System.EventArgs e)
     {
         if (ValidatePaymentDetails())
         {
-            // Save payment details using the PaymentService
+
+
+            //Save payment details using the PaymentService
             PaymentService.SavePaymentDetails(_paymentDetails);
 
             // Navigate to a confirmation page or perform other actions as needed
-            DisplayAlert("Payment Successful", "Thank you for your purchase!", "OK");
+            await DisplayAlert("Payment Successful", "Thank you for your purchase!", "OK");
+            await Navigation.PushAsync(new CongratulationsPage());
         }
         else
         {
-            DisplayAlert("Validation Error", "Please fill in all required fields.", "OK");
+            await DisplayAlert("Validation Error", "Please fill in all required fields.", "OK");
         }
     }
 
     private bool ValidatePaymentDetails()
     {
-        // Add your validation logic here
-        if (string.IsNullOrWhiteSpace(_paymentDetails.CardNumber) ||
-            string.IsNullOrWhiteSpace(_paymentDetails.ExpirationDate) ||
-            string.IsNullOrWhiteSpace(_paymentDetails.CVV) ||
-            string.IsNullOrWhiteSpace(_paymentDetails.CardHolderName))
-        {
-            return false; 
-        }
+        // Check if CardNumber is numeric
+        if (!IsNumeric(_paymentDetails.CardNumber))
+            return false;
 
-        return true; 
+        // Check if ExpirationDate is in date format
+        if (!IsDateFormat(_paymentDetails.ExpirationDate))
+            return false;
+
+        // Check if CVV is numeric and only 3 digits
+        if (!IsNumeric(_paymentDetails.CVV) || _paymentDetails.CVV.Length != 3)
+            return false;
+
+        // Check if CardHolderName contains only alphabets
+        if (!IsAlpha(_paymentDetails.CardHolderName))
+            return false;
+
+        return true;
     }
+
+    // Helper method to check if a string is numeric
+    private bool IsNumeric(string input)
+    {
+        return double.TryParse(input, out _);
+    }
+
+    // Helper method to check if a string is in date format (MM/YYYY)
+    private bool IsDateFormat(string input)
+    {
+        return DateTime.TryParseExact(input, "MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _);
+    }
+
+    // Helper method to check if a string contains only alphabets
+    private bool IsAlpha(string input)
+    {
+        return input.All(char.IsLetter);
+    }
+
 }
 

@@ -1,28 +1,32 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MuseumFusion.PaymentPage"
-             Title="PaymentPage">
+             Title="Payment">
     <StackLayout Margin="20">
         
         <!--Price Details Block-->
-        <StackLayout BackgroundColor="#F0F0F0" Padding="10" CornerRadius="5" Margin="0,0,0,20">
-            <Label Text="Museum Name" FontSize="18" FontAttributes="Bold" />
-            <Label Text="{Binding MuseumName}" FontSize="16" />
-            <Label Text="Amount" FontSize="16" />
+        <StackLayout BackgroundColor="#F0F0F0" Padding="10" Margin="0,0,0,20">
+            <!--<Label Text="Museum Name" FontSize="18" FontAttributes="Bold" />-->
+            <Label Text="{Binding MuseumName}" FontSize="20" FontAttributes="Bold" />
+            <!--<Label Text="Amount" FontSize="16" />-->
             <Label Text="{Binding Price, StringFormat='Amount: {0:C}'}" FontSize="16" />
-            <Label Text="Tax (20%)" FontSize="16" />
+            <!--<Label Text="Tax (20%)" FontSize="16" />-->
             <Label Text="{Binding Tax, StringFormat='Tax: {0:C}'}" FontSize="16" />
-            <Label Text="Total Amount" FontSize="18" FontAttributes="Bold" />
+            <!--<Label Text="Total Amount" FontSize="18" FontAttributes="Bold" />-->
             <Label Text="{Binding TotalAmount, StringFormat='Total: {0:C}'}" FontSize="18" FontAttributes="Bold" />
         </StackLayout>
 
         <!-- Card Details Block -->
-        <Entry Placeholder="Card Holder's Name" Text="{Binding CardHolderName}" Margin="0,0,0,10"/>
-        <Entry Placeholder="Card Number" Text="{Binding CardNumber}" Margin="0,0,0,10"/>
-        <Entry Placeholder="Expiration Date" Text="{Binding ExpirationDate}" Margin="0,0,0,10"/>
-        <Entry Placeholder="CVV" Text="{Binding CVV}" Margin="0,0,0,10" IsPassword="True"/>
-
+        <Entry Placeholder="Card Holder's Name" Text="{Binding CardHolderName}" Margin="0,0,0,10"
+       Keyboard="Text" MaxLength="50" />
+        <Entry Placeholder="Card Number" Text="{Binding CardNumber}" Margin="0,0,0,10"
+       Keyboard="Numeric" MaxLength="16" />
+        <Entry Placeholder="Expiration Date (MM/YYYY)" Text="{Binding ExpirationDate}" Margin="0,0,0,10"
+       Keyboard="Text" MaxLength="7" />
+        <Entry Placeholder="CVV" Text="{Binding CVV}" Margin="0,0,0,10" IsPassword="True"
+       Keyboard="Numeric" MaxLength="3" />
         <Button Text="Make Payment" Clicked="OnMakePaymentClicked" BackgroundColor="#4CAF50" TextColor="White"/>
+
     </StackLayout>
 </ContentPage>
