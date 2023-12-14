@@ -1,6 +1,6 @@
 ﻿namespace MuseumFusion;
 
-public partial class AddEditMuseums : ResourceDictionary
+public partial class AddEditMuseums : ContentPage
 {
 	public AddEditMuseums()
 	{
