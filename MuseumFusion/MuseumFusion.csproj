@@ -16,7 +16,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.museumfusion</ApplicationId>
-		<ApplicationIdGuid>676c88a7-5bf2-40e7-9545-951cf91487bf</ApplicationIdGuid>
+		<ApplicationIdGuid>b5e6febf-0da5-4b06-8139-aee3d6cbed5a</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -52,15 +52,68 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	  <None Remove="Resources\Images\museum1.jpg" />
+	  <None Remove="Resources\Images\casa.jpeg" />
+	  <None Remove="Resources\Images\canada.jpeg" />
+	  <None Remove="Resources\Images\canadian-war-museum.jpg" />
+	  <None Remove="Resources\Images\woolly-mammoth.jpg" />
+	  <None Remove="Resources\Images\ce.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\museum1.jpg" />
-	  <None Remove="Resources\.DS_Store" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Realm" Version="11.6.1" />
 	</ItemGroup>
+
 	<ItemGroup>
-	  <BundleResource Include="Resources\Images\museum1.jpg" />
-	  <BundleResource Include="Resources\.DS_Store" />
+	  <ProjectReference Include="..\MuseumFusion.Model\MuseumFusion.Model.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="MuseumDetailsPage.xaml.cs">
+	    <DependentUpon>MuseumDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AddEditMuseums.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="AddMuseumPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="AdminPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="BookTicketsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="CongratulationsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MuseumDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PaymentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="RegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SignInPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\casa.jpeg" />
+	  <BundleResource Include="Resources\Images\canada.jpeg" />
+	  <BundleResource Include="Resources\Images\canadianmuseum.jpg" />
+	  <BundleResource Include="Resources\Images\woollymammoth.jpg" />
+	  <BundleResource Include="Resources\Images\ce.jpg" />
 	</ItemGroup>
 </Project>

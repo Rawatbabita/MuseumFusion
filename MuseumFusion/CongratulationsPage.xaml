@@ -2,15 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MuseumFusion.CongratulationsPage"
-             Title="CongratulationsPage">
-    <StackLayout>
-        <Image Source="checkmark.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+             Title="Congratulations">
+    <StackLayout HeightRequest="400">
+        <Image Source="tick.png" WidthRequest="100" HeightRequest="200" HorizontalOptions="CenterAndExpand" />
 
-        <Label Text="Congratulations!" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,20"/>
+        <Label Text="Congratulations!" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"  />
 
-        <Label Text="Ticket Booked Successfully!" FontSize="18" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        <Label Text="Ticket Booked Successfully!" FontSize="18" HorizontalOptions="CenterAndExpand" />
 
         <!-- Go To Home button -->
-        <Button Text="Go To Home" Clicked="OnGoToHomeClicked" HorizontalOptions="CenterAndExpand" Margin="20"/>
+        <Button Text="Go To Home" Clicked="OnGoToHomeClicked"  VerticalOptions="CenterAndExpand" Margin="20"/>
     </StackLayout>
 </ContentPage>

@@ -9,6 +9,6 @@ public partial class BookTicketsPage : ContentPage
     private void OnBuyClicked(object sender, EventArgs e)
     {
         
-        Navigation.PushAsync(new PaymentPage());
+        Navigation.PushAsync(new PaymentPage(new Model.Museum()));
     }
 }
