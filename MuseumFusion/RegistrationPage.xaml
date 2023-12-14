@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MuseumFusion.RegistrationPage"
-             Title="RegistrationPage">
-    <StackLayout>
-        <Label Text="Sign Up" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,20"/>
+             x:Class="MuseumFusion.SignUpPage"
+             Title="SignUpPage">
+    <StackLayout Padding="20">
+        <Label Text="Sign Up" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,0,0,20"/>
 
-        <!-- Input fields for registration details -->
-        <Entry Placeholder="Full Name" x:Name="FullNameEntry" Margin="20"/>
-        <Entry Placeholder="Email" x:Name="EmailEntry" Margin="20"/>
-        <Entry Placeholder="Password" IsPassword="True" x:Name="PasswordEntry" Margin="20"/>
+        <Entry Placeholder="Name" Text="{Binding Name}" Margin="0,0,0,10"/>
+        <Entry Placeholder="Email" Text="{Binding Email}" Margin="0,0,0,10"/>
+        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" Margin="0,0,0,10"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Is Admin : " Margin="0,0,0,20"/>
+            <Switch IsToggled="{Binding IsAdmin}" Margin="10,0,0,10" />
+        </StackLayout>
 
-        <!-- Sign Up button -->
-        <Button Text="Sign Up" Clicked="OnSignUpClicked" HorizontalOptions="CenterAndExpand" Margin="20"/>
+
+        <Button Text="Create Account" Clicked="OnCreateAccountClicked" BackgroundColor="#4CAF50" TextColor="White"/>
     </StackLayout>
 </ContentPage>
