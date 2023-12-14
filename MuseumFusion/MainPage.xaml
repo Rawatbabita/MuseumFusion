@@ -1,31 +1,69 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MuseumFusion.MainPage"
-             Title="MuseumPage">
+             Title="Museums">
 
 
-    <StackLayout Margin="10">
-        <StackLayout Orientation="Horizontal" Padding="10">
-            <Picker x:Name="SortPicker" Title="Sort By" ItemsSource="{Binding SortOptions}" SelectedIndexChanged="OnSortChanged"/>
-            <Entry x:Name="FilterEntry" Placeholder="Filter By Name" TextChanged="OnFilterTextChanged"/>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Search Bar and Filter/Sort Controls -->
+        <StackLayout Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <SearchBar x:Name="FilterEntry" Placeholder="Search" TextChanged="OnFilterTextChanged" Background="#FFFAFA" BackgroundColor="#FFFFFF" />
+            <Picker x:Name="SortPicker" Title="Sort By" SelectedIndexChanged="OnSortChanged" Background="#FFFFFF">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Name</x:String>
+                        <x:String>Place</x:String>
+                        <x:String>Date</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
         </StackLayout>
 
-        <CollectionView ItemsSource="{Binding FilteredMuseums}" SelectionMode="Single" SelectionChanged="OnMuseumSelected"  >
+        <!-- Museum Tiles Collection -->
+        <CollectionView x:Name="museumTilesCollectionView" Grid.Row="1" Margin="4"   >
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical"/>
+                <GridItemsLayout Orientation="Vertical"
+                                 VerticalItemSpacing="10"
+                                 HorizontalItemSpacing="10"/>
             </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
+            <CollectionView.ItemTemplate  > 
                 <DataTemplate>
-                    <Frame Padding="10" Margin="5">
-                        <StackLayout>
-                            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="150"/>
-                            <Label Text="{Binding Name}" FontAttributes="Bold"/>
-                            <Label Text="{Binding Place}" />
-                            <Label Text="{Binding Date}" />
-                        </StackLayout>
-                    </Frame>
+                    <Border Padding="10" BackgroundColor="#F0F0F0" >
+                        <Grid  IsEnabled="True">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                
+                            </Grid.RowDefinitions>
+
+                            <!-- Museum Image -->
+                            <Image Grid.Row="0" Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="200"/>
+                            <!-- Museum Details -->
+                            <StackLayout Grid.Row="1" Margin="5,10,5,0">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding Place}" FontSize="14"/>
+                                <Label Text="{Binding Date}" FontSize="14"/>
+                            </StackLayout>
+
+                            <!-- Clickable Gesture Recognizer -->
+                            <Border Grid.RowSpan="3" BackgroundColor="Transparent">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnMuseumSelected" CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </Grid>
+    
 </ContentPage>
