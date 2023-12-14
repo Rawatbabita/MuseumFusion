@@ -1,4 +1,5 @@
-﻿using MuseumFusion.Model;
+using MuseumFusion.Model;
+using MuseumFusion.ViewModels;
 
 namespace MuseumFusion
 {
@@ -22,7 +23,7 @@ namespace MuseumFusion
             }
             else
             {
-                await Navigation.PushAsync(new SignInPage());
+                await Navigation.PushAsync(new SignInPage(new LoginPageVM()));
             }
         }
 
